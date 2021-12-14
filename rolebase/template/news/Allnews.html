@@ -1,0 +1,35 @@
+{% extends 'core\siteBase.html' %}
+{% load static %}
+{% block title %}-Student Profile {% endblock title %}
+{% block content %}
+<div class="col-md-9">
+<div class="card-body">
+    {% for i in NewsData %}
+    
+    <div class="post clearfix">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="{{i.ownerimg}}" alt="User Image">
+            <span class="username">
+                <a href="#">{{i.headlines}}</a>
+                <p>{{i.ownername}}</p>
+            </span>
+            <span class="description">{{i.dept}}</span><span class="description">{{i.postedtime}}</span>
+        </div>
+        <!-- /.user-block -->
+        {{i.details|safe|truncatewords:150}}
+        <a href='{% url 'newsdetails' pk=i.id %}'>Read More</a>
+        {% if request.user.id == i.owner%}
+        <div class="row">
+            <a class="btn btn-info btn-sm" href="{% url 'editnews' pk=i.id %}">Edit</a>
+
+            <form action="{% url 'deletenews' pk=i.id %}" method="POST" class='col-sm-4'>
+                {% csrf_token %}
+                <input type="submit" value='Delete' class='btn btn-danger btn-sm'>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}

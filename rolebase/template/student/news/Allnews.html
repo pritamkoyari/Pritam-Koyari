@@ -1,0 +1,24 @@
+{% extends 'core\siteBase.html' %}
+{% load static %}
+{% block title %}-Student Profile {% endblock title %}
+{% block content %}
+<div class="card-body">
+    {% for i in NewsData %}
+    <div class="post clearfix">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="{{i.ownerimg.url}}" alt="User Image">
+            <span class="username">
+                <a href="#">{{i.headlines}}</a>
+            </span>
+            <br />
+            <span class="username">
+                <a href="#">{{i.ownername}}</a>
+            </span>
+            <span class="description">{{i.dept}}</span><span class="description">{{i.postedtime}}</span>
+        </div>
+        <!-- /.user-block -->
+        {{i.details|safe}}
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
