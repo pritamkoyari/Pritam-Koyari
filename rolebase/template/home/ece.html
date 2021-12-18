@@ -1,0 +1,55 @@
+{% extends 'core/homeBase.html' %}
+{% load static %}
+
+{% block content%}
+    
+      <section id="contentSection">
+     
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="contact_area">
+            <h2 style="color:blue">Electronics & Communication Engineering:-</h2>
+            </div>
+            </div>
+            </div>
+            </div>
+            </section>
+
+            <section>
+             <div class = "container-bottom-left">
+           
+
+{% for i in ece %}
+<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="thumbnail">
+
+
+<div class="caption">
+
+<h4>{{i.headlines|truncatewords:5}}</h4></a>
+<img src="{{i.img.url}}" alt="Nature">
+{{i.details|safe|truncatewords:300}}
+
+</div>
+</div>
+</div>
+{% empty %}
+<div>
+<h1>No News Found, may be cdc not approved any news</h1>
+</div>
+{% endfor %}
+</div>
+
+</section>
+
+            
+                     
+          
+
+
+
+{% endblock content %} 
+    
+    
+     
